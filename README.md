@@ -59,9 +59,24 @@ Full control over proxy configuration including per-protocol settings, PAC URLs,
   <img src="demo/settings_advanced.png" alt="Advanced settings view" width="500">
 </p>
 
-## Installation
+## Install
+
+<p align="center">
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/easy-proxy-profile-switcher/">
+    <img src="https://img.shields.io/badge/Firefox-Install%20Add--on-FF7139?logo=firefox-browser&logoColor=white" alt="Firefox Add-on">
+  </a>
+  &nbsp;&nbsp;
+
+[//]: # (  <a href="https://chromewebstore.google.com/detail/<EXTENSION_ID>">)
+
+[//]: # (    <img src="https://img.shields.io/badge/Chrome-Install%20Extension-4285F4?logo=googlechrome&logoColor=white" alt="Chrome Extension">)
+
+[//]: # (  </a>)
+</p>
 
 ### Firefox
+
+Install from the [Firefox Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/easy-proxy-profile-switcher/) or manually:
 
 1. Download the latest `.zip` from the [Releases](https://github.com/mohammadhzp/proxy-profile-switcher/releases) page.
 2. Open `about:addons` in Firefox.
@@ -70,10 +85,15 @@ Full control over proxy configuration including per-protocol settings, PAC URLs,
 
 ### Chrome / Chromium
 
+Install manually:
+
 1. Download or clone this repository.
 2. Open `chrome://extensions/` and enable **Developer mode**.
 3. Click **Load unpacked** and select the project directory.
 
+> A one-time registration fee in amount of 5$ is required in order to register as a Chrome Web Store Developer.
+> otherwise I won't be able to publish on chrome-store.
+> Please contact me you can support me on this.
 ## Usage
 
 | Action | Result |
