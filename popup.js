@@ -117,7 +117,7 @@ $("toggleBtn").addEventListener("click", () => {
 
     $("simpleView").classList.toggle("hidden", advanced);
     $("advancedView").classList.toggle("hidden", !advanced);
-    $("toggleBtn").innerHTML = advanced ? "Simple &#x25B4;" : "Advanced &#x25BE;";
+    $("toggleBtn").textContent = advanced ? "Simple \u25B4" : "Advanced \u25BE";
 
     // Sync views from storage when switching
     chrome.storage.local.get("proxySettings", data => {
