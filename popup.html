@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+* { box-sizing: border-box; }
+body { padding: 10px; font: 13px/1.5 system-ui, sans-serif; margin: 0; overflow-x: hidden; }
+h3 { margin: 0 0 8px; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 6px; }
+fieldset { border: 1px solid #ddd; border-radius: 4px; margin: 0 0 8px; padding: 4px 10px 6px; }
+legend { font-weight: 600; font-size: 12px; color: #555; }
+label { display: block; margin: 2px 0; cursor: pointer; }
+.inline label { display: inline; }
+.inline { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.field { margin: 6px 0; }
+.field-label { font-size: 12px; color: #444; margin-bottom: 2px; }
+.field-row {
+    display: flex; align-items: center; gap: 4px;
+}
+.field-row input[type="text"] { flex: 1; min-width: 0; }
+.field-row input[type="number"] { width: 20%; flex-shrink: 0; }
+.field-row span { font-size: 12px; flex-shrink: 0; }
+
+input[type="text"], input[type="number"], textarea {
+    padding: 3px 5px; border: 1px solid #ccc; border-radius: 3px; font: inherit;
+}
+textarea { width: 100%; height: 40px; resize: vertical; display: block; margin-top: 2px; }
+
+.section { padding: 8px; margin: 0 0 8px; background: #f8f8f8; border: 1px solid #eee; border-radius: 4px; }
+.footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+.toggle { background: none; border: none; color: #0060df; cursor: pointer; font: inherit; padding: 0; }
+.toggle:hover { text-decoration: underline; }
+#saveBtn {
+    padding: 5px 18px; background: #0060df; color: white;
+    border: none; border-radius: 3px; cursor: pointer; font: inherit; font-weight: 600;
+}
+#saveBtn:hover { background: #003eaa; }
+.hidden { display: none; }
+.status { text-align: center; color: #058b00; font-size: 12px; margin-top: 4px; }
+.indent { margin-left: 1.5em; }
+</style>
+</head>
+<body>
+
+<h3>Proxy Profile Settings</h3>
+
+<!-- Simple View -->
+<div id="simpleView">
+    <fieldset>
+        <legend>Proxy Type</legend>
+        <div class="inline">
+            <label><input type="radio" name="simpleType" value="socks" checked> SOCKS</label>
+            <label><input type="radio" name="simpleType" value="http"> HTTP</label>
+        </div>
+    </fieldset>
+    <div class="field">
+        <div class="field-row">
+            <span>Host</span>
+            <input type="text" id="simpleHost" placeholder="127.0.0.1">
+            <span>Port</span>
+            <input type="number" id="simplePort" min="0" max="65535" value="0">
+        </div>
+    </div>
+    <label><input type="checkbox" id="simpleProxyDNS" checked> Proxy DNS</label>
+</div>
+
+<!-- Advanced View -->
+<div id="advancedView" class="hidden">
+    <fieldset>
+        <legend>Mode</legend>
+        <label><input type="radio" name="mode" value="none"> No proxy</label>
+        <label><input type="radio" name="mode" value="autoDetect"> Auto-detect</label>
+        <label><input type="radio" name="mode" value="system"> Use system settings</label>
+        <label><input type="radio" name="mode" value="manual"> Manual configuration</label>
+        <label><input type="radio" name="mode" value="autoConfig"> Auto config URL</label>
+    </fieldset>
+
+    <div id="manualSection" class="section hidden">
+        <div class="field">
+            <div class="field-row">
+                <span>HTTP</span>
+                <input type="text" id="httpHost" placeholder="hostname">
+                <span>Port</span>
+                <input type="number" id="httpPort" min="0" max="65535" value="0">
+            </div>
+        </div>
+        <label class="indent"><input type="checkbox" id="useHttpForHttps"> Also use for HTTPS</label>
+        <div class="field" id="httpsRow">
+            <div class="field-row">
+                <span>HTTPS</span>
+                <input type="text" id="httpsHost" placeholder="hostname">
+                <span>Port</span>
+                <input type="number" id="httpsPort" min="0" max="65535" value="0">
+            </div>
+        </div>
+        <div class="field">
+            <div class="field-row">
+                <span>SOCKS</span>
+                <input type="text" id="socksHost" placeholder="hostname">
+                <span>Port</span>
+                <input type="number" id="socksPort" min="0" max="65535" value="0">
+            </div>
+        </div>
+        <div class="inline indent" style="margin:4px 0">
+            <label><input type="radio" name="socksVersion" value="4"> v4</label>
+            <label><input type="radio" name="socksVersion" value="5"> v5</label>
+        </div>
+        <div class="field">
+            <div class="field-label">No proxy for:</div>
+            <textarea id="noProxyFor" placeholder=".example.com, 192.168.1.0/24"></textarea>
+        </div>
+        <label><input type="checkbox" id="autoLogin"> Skip auth prompt if password saved</label>
+        <label><input type="checkbox" id="proxyDNS"> Proxy DNS (SOCKS v5)</label>
+    </div>
+
+    <div id="autoSection" class="section hidden">
+        <div class="field">
+            <div class="field-label">PAC URL</div>
+            <input type="text" id="autoConfigUrl" placeholder="http://example.com/proxy.pac" style="width:100%">
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <button class="toggle" id="toggleBtn">Advanced &#x25BE;</button>
+    <span id="status" class="status hidden">Settings saved!</span>
+    <button id="saveBtn">Save</button>
+</div>
+
+<script src="proxy.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
