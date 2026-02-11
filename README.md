@@ -91,9 +91,9 @@ Install manually:
 2. Open `chrome://extensions/` and enable **Developer mode**.
 3. Click **Load unpacked** and select the project directory.
 
-> A one-time registration fee in amount of 5$ is required in order to register as a Chrome Web Store Developer.
+> A one-time registration fee in amount of \$5 is required in order to register as a Chrome Web Store Developer.
 > otherwise I won't be able to publish on chrome-store.
-> Please contact me you can support me on this.
+> Please contact me if you can support me to publish the extension on chrome store.
 ## Usage
 
 | Action | Result |
